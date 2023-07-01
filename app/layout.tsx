@@ -1,6 +1,8 @@
 import Navbar from "@/components/Navbar";
 import "./globals.css";
 import Footer from "@/components/Footer";
+import { Suspense } from "react";
+import Loading from "./loading";
 
 export const metadata = {
   title: "Flexible",
@@ -16,7 +18,9 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Navbar />
-        <main>{children}</main>
+        <Suspense fallback={<Loading />}>
+          <main>{children}</main>
+        </Suspense>
         <Footer />
       </body>
     </html>

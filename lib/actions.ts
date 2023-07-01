@@ -7,6 +7,7 @@ import {
   getProjectsOfUserQuery,
   getUserQuery,
   projectsQuery,
+  updateProjectMutation,
 } from "@/graphql";
 import { GraphQLClient } from "graphql-request";
 const isProduction = process.env.NODE_ENV === "production";
@@ -112,5 +113,40 @@ export const getUserProjects = async (id: string, last?: number) => {
 
 export const deleteProject = (id: string, token: string) => {
   client.setHeader("Authorization", `Bearer ${token}`);
+  client.setHeader("x-api-key", apiKey);
   return makeGraphQLRequest(deleteProjectMutation, { id });
+};
+
+export const updateProject = async (
+  form: ProjectForm,
+  projectId: string,
+  token: string
+) => {
+  client.setHeader("Authorization", `Bearer ${token}`);
+  client.setHeader("x-api-key", apiKey);
+  //기존의 이미지는 cloudinary 를 통해 저장되고 url string 만 저장되어 있음
+  //새로 이미지 파일을 load 하면 base64 url 형태임.
+  function isBase64ImageURL(value: string) {
+    //[a-z] : image file extentions
+    const regex = /^data:image\/[a-z]+;base64,/;
+    return regex.test(value);
+  }
+  let updatedForm = { ...form };
+  const isUploadingNewImage = isBase64ImageURL(form.image);
+  //새로 이미지를 올렸을 경우에 form.image 변경
+  if (isUploadingNewImage) {
+    const imageUrl = await uploadImage(form.image);
+
+    if (imageUrl.url) {
+      updatedForm = {
+        ...form,
+        image: imageUrl.url,
+      };
+    }
+  }
+  const variables = {
+    id: projectId,
+    input: updatedForm,
+  };
+  return makeGraphQLRequest(updateProjectMutation, variables);
 };
