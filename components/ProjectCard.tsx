@@ -6,11 +6,11 @@ type Props = {
   image: string;
   title: string;
   name: string;
-  avartarUrl: string;
+  avatarUrl: string;
   userId: string;
 };
 
-const ProjectCard = ({ id, image, title, name, avartarUrl, userId }: Props) => {
+const ProjectCard = ({ id, image, title, name, avatarUrl, userId }: Props) => {
   return (
     <div className="flexCenter flex-col rouded-2xl drop-shadow-card">
       <Link
@@ -32,7 +32,7 @@ const ProjectCard = ({ id, image, title, name, avartarUrl, userId }: Props) => {
         <Link href={`/profile/${userId}`}>
           <div className="flexCenter gap-2">
             <Image
-              src={avartarUrl}
+              src={avatarUrl}
               width={24}
               height={24}
               className="rounded-full"

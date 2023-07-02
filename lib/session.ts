@@ -6,6 +6,7 @@ import jsonwebtoken from "jsonwebtoken";
 import { JWT } from "next-auth/jwt";
 import { SessionInterface, UserProfile } from "@/common.types";
 import { createUser, getUser } from "./actions";
+import { redirect } from "next/dist/server/api-utils";
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -49,9 +50,10 @@ export const authOptions: NextAuthOptions = {
             ...data.user,
           },
         };
+
         return newSession;
-      } catch (error) {
-        console.log(error);
+      } catch (error: any) {
+        console.error("Error retrieving user data: ", error.message);
         return session;
       }
     },
@@ -65,7 +67,7 @@ export const authOptions: NextAuthOptions = {
 
         //없으면, 생성
         if (!userExists.user) {
-          const newUsers = await createUser(
+          await createUser(
             user.name as string,
             user.email as string,
             user.image as string
@@ -74,7 +76,7 @@ export const authOptions: NextAuthOptions = {
         //return
         return true;
       } catch (error: any) {
-        console.log(error);
+        console.log("Error checking if user exists: ", error.message);
         return false;
       }
     },

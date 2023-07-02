@@ -43,6 +43,9 @@ body {
   background: #888;
   border-radius: 12px;
 }
+::-webkit-scrollbar-thumb:hover {
+  background: #326a85; /* 스크롤바 슬라이더의 배경색 (마우스 호버 상태) */
+}
 
 .modal-head-text {
   @apply md:text-5xl text-3xl font-extrabold text-left max-w-5xl w-full;
@@ -163,4 +166,9 @@ body {
 /* Profile Projects */
 .profile_projects {
   @apply grid xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-8 mt-5;
+}
+
+/* Category Scroll */
+.scroll-container::-webkit-scrollbar {
+  @apply h-2 w-2;
 }

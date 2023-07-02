@@ -19,13 +19,15 @@ const ProfileMenu = ({ session }: { session: SessionInterface }) => {
           onMouseEnter={() => setOpenModal(true)}
         >
           {session?.user?.image && (
-            <Image
-              src={session.user.image}
-              width={40}
-              height={40}
-              className="rounded-full"
-              alt="user profile image"
-            />
+            <Link href={`profile/${session.user.id}`}>
+              <Image
+                src={session.user.image}
+                width={40}
+                height={40}
+                className="rounded-full"
+                alt="user profile image"
+              />
+            </Link>
           )}
         </Menu.Button>
 

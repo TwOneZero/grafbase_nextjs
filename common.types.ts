@@ -51,6 +51,7 @@ export interface SessionInterface extends Session {
     email: string;
     avatarUrl: string;
   };
+  error?: string;
 }
 
 export interface ProjectForm {
