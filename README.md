@@ -1,34 +1,13 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Grafbase & Nextjs 를 이용한 클론코딩
 
-## Getting Started
+- Nextjs 와 Grafbase 를 이용한 웹사이트 클론코딩 학습
+- [Reference Video](https://youtu.be/986hztrfaSQ?si=dpTWFo31dcL_ZcmH)
 
-First, run the development server:
+---
+# Study Note
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Grafbase 란?
+[공식 홈페이지](https://grafbase.com/docs)
+- 엔드투엔드 유형 안전성을 갖춘 *GraphQL API*를 구축하고, 쉽게 배포할 수 있는 서비스
+- 커넥터와 리졸버를 사용하여 모든 데이터 소스를 통합하고 GraphQL 에지 캐싱, Apollo 페더레이션 등을 구성할 수 있음.
+- Grafbase CLI를 사용해 로컬에서 작업할 수도 있습니다. 각 Git 브랜치에는 간편한 테스트와 협업을 위한 전용 프리뷰 배포가 포함.
